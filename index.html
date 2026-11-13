@@ -26,6 +26,7 @@
   --pink:#ff2d78;
   --gold:#ffb020;
   --mint:#00e08a;
+  --red:#ff3c3c;
 
   --glass:rgba(255,255,255,.07);
   --glass-2:rgba(255,255,255,.11);
@@ -68,7 +69,10 @@ body{
   position:relative;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  text-align: center; /* Центрируем весь текст */
+  /* Центрируем весь контент */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ---- Fortnite aurora backdrop ---- */
@@ -102,8 +106,9 @@ body{
   mix-blend-mode:overlay;
 }
 
-.shell{position:relative;z-index:2}
+.shell{position:relative;z-index:2; width: 100%; display: flex; flex-direction: column; align-items: center;}
 
+/* ---- shared glass recipe ---- */
 .glass{
   position:relative;
   background:linear-gradient(150deg,rgba(255,255,255,.10),rgba(255,255,255,.03) 46%,rgba(255,255,255,.06));
@@ -125,13 +130,13 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
 
-.container{width:100%;max-width:var(--max);margin:0 auto;padding-inline:var(--pad);display:flex;flex-direction:column;align-items:center;}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding-inline:var(--pad); display: flex; flex-direction: column; align-items: center;}
 
 /* ============================================================
    TOP BAR
    ============================================================ */
 .topbar{
-  position:sticky;top:0;z-index:60;
+  width: 100%; position:sticky;top:0;z-index:60;
   background:rgba(13,6,32,.55);
   -webkit-backdrop-filter:blur(24px) saturate(180%);
   backdrop-filter:blur(24px) saturate(180%);
@@ -176,7 +181,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 /* ============================================================
    HERO
    ============================================================ */
-.hero{padding:clamp(40px,6vw,70px) 0 clamp(30px,5vw,50px);position:relative;display:flex;flex-direction:column;align-items:center;}
+.hero{padding:clamp(48px,7vw,80px) 0 clamp(32px,5vw,48px);position:relative; text-align: center;}
 
 .eyebrow{
   display:inline-flex;align-items:center;gap:9px;
@@ -186,7 +191,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.78rem;
   letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
-  margin:0 auto;
+  margin-bottom: 16px;
 }
 .eyebrow .sq{
   width:8px;height:8px;border-radius:2px;
@@ -194,32 +199,13 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   box-shadow:0 0 10px rgba(34,211,238,.8);
 }
 
-/* Новый блок доверия */
-.trust-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0, 224, 138, 0.1);
-    border: 1px solid rgba(0, 224, 138, 0.3);
-    color: var(--mint);
-    padding: 6px 16px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-top: 16px;
-    font-family: 'Rajdhani', sans-serif;
-    letter-spacing: 0.05em;
-    box-shadow: 0 0 20px rgba(0, 224, 138, 0.15);
-}
-
 h1{
-  margin:clamp(16px,2.5vw,24px) 0 0;
+  margin:0 auto;
   font-size:clamp(2.6rem,7vw,5.2rem);
   font-weight:800;
   line-height:.94;
   letter-spacing:-.045em;
   max-width:15ch;
-  text-align: center;
 }
 h1 .l1{display:block;color:var(--ink)}
 h1 .l2{
@@ -232,8 +218,8 @@ h1 .l2{
 }
 
 .hero-lead{
-  margin-top:clamp(16px,2.6vw,24px);
-  max-width:48ch;
+  margin:20px auto 0;
+  max-width:50ch;
   font-size:clamp(1rem,2vw,1.15rem);
   line-height:1.6;
   color:var(--ink-2);
@@ -244,26 +230,26 @@ h1 .l2{
   -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-weight:600;
 }
 
-/* Предупреждение про скам */
-.scam-warning {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    background: rgba(255, 45, 120, 0.1);
-    border: 1px solid rgba(255, 45, 120, 0.3);
-    border-left: 4px solid var(--pink);
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    color: #ffb3d0;
-    margin-top: 20px;
-    max-width: 600px;
-    text-align: left;
-    box-shadow: 0 10px 30px -10px rgba(255, 45, 120, 0.2);
+/* НОВЫЕ ЭЛЕМЕНТЫ СНЯТИЯ СТРАХА */
+.trust-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0, 224, 138, 0.1); border: 1px solid rgba(0, 224, 138, 0.3);
+  color: var(--mint); padding: 8px 16px; border-radius: 50px;
+  font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; margin-top: 24px;
+  box-shadow: 0 0 20px rgba(0, 224, 138, 0.15);
 }
-.scam-warning strong { color: var(--pink); }
+.trust-badge svg { width: 16px; height: 16px; fill: currentColor; }
 
-.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:clamp(20px,3.4vw,30px)}
+.scam-warning {
+  background: rgba(255, 60, 60, 0.08); border: 1px solid rgba(255, 60, 60, 0.25);
+  padding: 14px 24px; border-radius: 12px; font-size: 0.9rem;
+  color: #ffb3b3; margin: 20px auto 0; max-width: 600px;
+  display: flex; align-items: center; gap: 10px; text-align: left;
+}
+.scam-warning svg { width: 20px; height: 20px; color: #ff3c3c; flex-shrink: 0; }
+
+.hero-chips{display:flex;justify-content: center; flex-wrap:wrap;gap:10px;margin-top:28px}
 .chip{
   display:inline-flex;align-items:center;gap:8px;
   padding:9px 16px;border-radius:999px;
@@ -277,19 +263,16 @@ h1 .l2{
 /* ============================================================
    DOWNLOAD CARD
    ============================================================ */
-.download{padding-bottom:clamp(40px,7vw,70px)}
+.download{padding-bottom:clamp(48px,7vw,80px); width: 100%; display: flex; justify-content: center;}
 
 .dl-card{
-  max-width:620px;border-radius:var(--r-xl);overflow:hidden;
+  max-width:560px; width: 100%; border-radius:var(--r-xl); overflow:hidden;
   padding:clamp(24px,3.4vw,34px);
-  margin: 0 auto;
-  width: 100%;
 }
 
 .dl-head{
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  display:flex;align-items:center;justify-content: space-between; gap:14px; flex-wrap:wrap;
   padding-bottom:22px;border-bottom:1px solid var(--glass-line-soft);
-  text-align: left;
 }
 .dl-icon{
   flex:0 0 auto;width:46px;height:46px;border-radius:15px;
@@ -299,12 +282,12 @@ h1 .l2{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.3);
 }
 .dl-icon svg{width:21px;height:21px;fill:#fff}
-.dl-head-text{min-width:0;flex:1 1 180px;text-align: left;}
+.dl-head-text{min-width:0;flex:1 1 180px; text-align: left;}
 .dl-filename{
-  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.06rem;
+  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.1rem;
   letter-spacing:.02em;color:#fff;word-break:break-word;
 }
-.dl-filesize{font-size:.83rem;color:var(--ink-3);margin-top:1px}
+.dl-filesize{font-size:.85rem;color:var(--ink-3);margin-top:2px}
 .badge{
   flex:0 0 auto;padding:7px 13px;border-radius:999px;
   background:rgba(0,224,138,.12);border:1px solid rgba(0,224,138,.32);
@@ -322,11 +305,12 @@ h1 .l2{
 .pw-label{
   font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.76rem;
   letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+  text-align: center;
 }
-.pw-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:8px}
+.pw-row{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:10px}
 .pw-value{
   font-family:'SF Mono',ui-monospace,'JetBrains Mono','Menlo',monospace;
-  font-size:clamp(1.5rem,4.6vw,1.95rem);font-weight:700;
+  font-size:clamp(1.6rem,4.6vw,2rem);font-weight:700;
   letter-spacing:.1em;color:#fff;
   text-shadow:0 0 26px rgba(139,92,246,.55);
   -webkit-user-select:all;user-select:all;white-space:nowrap;
@@ -381,6 +365,15 @@ h1 .l2{
   letter-spacing:.1em;color:rgba(255,255,255,.92);white-space:nowrap;
 }
 
+/* ИНСТРУКЦИЯ ЗАПУСКА */
+.safety-note {
+  margin-top: 16px; padding: 12px; border-radius: 8px;
+  background: rgba(34, 211, 238, 0.08); border: 1px dashed rgba(34, 211, 238, 0.3);
+  font-size: 0.85rem; color: var(--cyan); text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.safety-note svg { width: 16px; height: 16px; fill: currentColor; }
+
 .spinner{
   width:20px;height:20px;flex:0 0 20px;border-radius:50%;
   border:2px solid rgba(255,255,255,.35);border-top-color:#fff;
@@ -393,33 +386,12 @@ h1 .l2{
 }
 .dl-note b{color:var(--ink-2);font-weight:500}
 
-/* Жирный текст безопасности */
-.safety-bold {
-    margin-top: 24px;
-    padding: 16px;
-    background: rgba(0, 224, 138, 0.05);
-    border: 1px solid rgba(0, 224, 138, 0.2);
-    border-radius: 12px;
-    font-size: 0.95rem;
-    color: #fff;
-    line-height: 1.5;
-}
-.safety-bold strong {
-    color: var(--mint);
-    font-weight: 700;
-    display: block;
-    margin-bottom: 4px;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.02em;
-}
-
 /* ============================================================
    FEATURES
    ============================================================ */
-.features{padding-bottom:clamp(60px,8vw,100px);width:100%;}
+.features{padding-bottom:clamp(64px,8vw,100px); width: 100%;}
 
-.sec-head{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-bottom:clamp(24px,3.4vw,32px)}
+.sec-head{display:flex;align-items:baseline;justify-content: center; gap:14px;margin-bottom:clamp(24px,3.4vw,32px); width: 100%;}
 .sec-head .num{
   font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.8rem;
   letter-spacing:.16em;color:var(--cyan);
@@ -427,14 +399,13 @@ h1 .l2{
 .sec-head h2{
   font-size:clamp(1.5rem,3.6vw,2.1rem);font-weight:700;letter-spacing:-.028em;color:#fff;
 }
-.sec-head .line{flex:1 1 auto;height:1px;background:linear-gradient(90deg,var(--glass-line),transparent);align-self:center;max-width: 100px; margin-left: 10px;}
+.sec-head .line{flex:1 1 auto;height:1px;background:linear-gradient(90deg,var(--glass-line),transparent);align-self:center; max-width: 100px;}
 
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width: 100%;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px; width: 100%;}
 
 .card{
-  border-radius:var(--r-lg);padding:clamp(24px,2.6vw,30px);
+  border-radius:var(--r-lg);padding:clamp(24px,2.6vw,30px); text-align: left;
   transition:transform .34s var(--ease),box-shadow .34s var(--ease),border-color .34s var(--ease);
-  text-align: left;
 }
 .card:hover{
   transform:translateY(-6px);
@@ -463,34 +434,31 @@ h1 .l2{
    FOOTER
    ============================================================ */
 footer{
-  border-top:1px solid var(--glass-line-soft);
+  width: 100%; border-top:1px solid var(--glass-line-soft);
   background:rgba(9,4,22,.42);
   -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
   padding:clamp(30px,4vw,42px) 0;
 }
 .foot{
-  display:flex;flex-direction: column; align-items:center; justify-content:center; gap:16px; text-align: center;
+  display:flex;align-items:center;justify-content:center; flex-direction: column; gap:20px;
 }
 .foot-brand{
-  display:flex;align-items:center;gap:10px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
   font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.82rem;
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);
 }
 .disclaimer{
-  max-width:600px;
+  max-width:650px; text-align: center;
   font-size:.78rem;line-height:1.68;color:var(--ink-3);
 }
 .disclaimer b{color:var(--ink-2);font-weight:600}
 
 /* ============================================================
-   REVEAL
+   REVEAL & RESPONSIVE
    ============================================================ */
 .rise{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
 .rise.in{opacity:1;transform:none}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width:900px){
   .grid{grid-template-columns:1fr}
 }
@@ -498,15 +466,16 @@ footer{
   body{font-size:16px}
   .brand-text{font-size:.72rem;letter-spacing:.1em}
   .pill{font-size:.7rem;padding:6px 12px 6px 11px}
-  .pw-row{gap:12px}
+  .pw-row{gap:12px; flex-direction: column;}
   .pw-value{letter-spacing:.06em}
   .cta{padding:16px 18px;gap:10px}
   .cta-tag{display:none}
-  .dl-card{border-radius:var(--r-lg)}
+  .dl-card{border-radius:var(--r-lg); padding: 20px;}
+  .scam-warning { flex-direction: column; text-align: center; }
 }
 @media (max-width:400px){
   .topbar-inner{height:54px}
-  .pw-value{font-size:1.35rem}
+  .pw-value{font-size:1.5rem}
   .brand-mark{width:26px;height:26px;border-radius:8px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -549,27 +518,26 @@ footer{
     <div class="container">
       <span class="eyebrow"><span class="sq" aria-hidden="true"></span> Squad Utility · External Client</span>
       
-      <!-- ДОБАВЛЕНО: Trusted by 500+ players -->
-      <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          Trusted by 500+ players
-      </div>
-
       <h1>
         <span class="l1">Treasure Hour</span>
         <span class="l2">Squad Planner</span>
       </h1>
+      
       <p class="hero-lead">
         Track <b>Treasure Hours</b>, split the island, and calculate your real
         <b>Pirate Token</b> odds. <span class="g">100% external. No injection, no bans.</span>
       </p>
 
-      <!-- ДОБАВЛЕНО: Предупреждение про скам -->
+      <!-- ДОБАВЛЕНО: Бейдж доверия -->
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4Zm-1 15-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10l-6 6Z"/></svg>
+        Trusted by 500+ players
+      </div>
+
+      <!-- ДОБАВЛЕНО: Предупреждение о скаме -->
       <div class="scam-warning">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-          <div>
-              <strong>WARNING:</strong> Paid "carries" and AFK tools will get your Epic account permanently banned. This tool is 100% external and does not touch the game.
-          </div>
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <span><strong>WARNING:</strong> Paid "carries" and AFK tools will get your Epic account permanently banned. This tool is 100% external and does not touch the game.</span>
       </div>
 
       <div class="hero-chips">
@@ -594,14 +562,14 @@ footer{
     <div class="container">
       <div class="dl-card glass rise">
         <div class="dl-head">
-          <span class="dl-icon" aria-hidden="true">
+          <div class="dl-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-7-7Zm0 2.5L17.5 9H13V4.5ZM8 12h8v2H8v-2Zm0 4h8v2H8v-2Z"/></svg>
-          </span>
-          <span class="dl-head-text">
-            <span class="dl-filename">TreasureHourAlert.zip</span>
-            <span class="dl-filesize">4.2 MB · Windows archive</span>
-          </span>
-          <span class="badge">v1.0.0 Stable</span>
+          </div>
+          <div class="dl-head-text">
+            <div class="dl-filename">TreasureHourAlert.zip</div>
+            <div class="dl-filesize">4.2 MB · Windows archive</div>
+          </div>
+          <div class="badge">v1.0.0 Stable</div>
         </div>
 
         <div class="pw-block">
@@ -620,13 +588,13 @@ footer{
           <span class="cta-tag">.EXE</span>
         </button>
 
-        <!-- ДОБАВЛЕНО: Жирный текст про безопасность -->
-        <div class="safety-bold">
-            <strong>100% Safe & External.</strong>
-            This tool does not read Fortnite's memory, does not inject DLLs, and does not automate gameplay. It only reads local replay files from your Documents folder. Zero risk of EAC bans.
-        </div>
-
         <p class="dl-note">Download starts <b>automatically</b> in a moment — or press the button above.</p>
+
+        <!-- ДОБАВЛЕНО: Блок безопасности -->
+        <div class="safety-note">
+          <svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4Z"/></svg>
+          <span><strong>100% Safe & External:</strong> No memory reading, no injection. <b>Run as Administrator</b> for features to work.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -635,6 +603,7 @@ footer{
   <section class="features">
     <div class="container">
       <div class="sec-head rise">
+        <span class="line" aria-hidden="true"></span>
         <span class="num">01</span>
         <h2>Modules</h2>
         <span class="line" aria-hidden="true"></span>
@@ -642,25 +611,25 @@ footer{
 
       <div class="grid">
         <article class="card glass rise">
-          <span class="card-ico" aria-hidden="true">
+          <div class="card-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Zm.6-13h-1.2v6l5.2 3.1.6-1-4.6-2.7V7Z"/></svg>
-          </span>
+          </div>
           <h3><span class="sl">//</span> Hour Tracker</h3>
           <p>Never miss a 1.5x or 2x boosted drop rate window. Alerts in your local time zone.</p>
         </article>
 
         <article class="card glass rise">
-          <span class="card-ico" aria-hidden="true">
+          <div class="card-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3Zm0 2.3 3 1.5 3-1.5 3 1.5v10.9l-3-1.5-3 1.5-3-1.5V5.3Z"/></svg>
-          </span>
+          </div>
           <h3><span class="sl">//</span> Route Planner</h3>
           <p>Split the island four ways. Each squadmate gets a route from the bus line.</p>
         </article>
 
         <article class="card glass rise">
-          <span class="card-ico" aria-hidden="true">
+          <div class="card-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M4 19h16v2H4v-2Zm2.6-3.6L18.6 4 20 5.4 8 16.8 6.6 15.4ZM7 12l2 2 2-2-2-2-2 2Zm4-4 2 2 2-2-2-2-2 2Z"/></svg>
-          </span>
+          </div>
           <h3><span class="sl">//</span> Real Odds</h3>
           <p>Count chests your squad opens and see the actual math behind your chances.</p>
         </article>
@@ -695,7 +664,6 @@ footer{
   var FILE_URL = 'files/TreasureHourAlert.zip';
   var FILE_NAME = 'TreasureHourAlert.zip';
 
-  /* ---------- download core (hidden anchor) ---------- */
   function triggerDownload(){
     var a = document.createElement('a');
     a.href = FILE_URL;
@@ -706,7 +674,6 @@ footer{
     document.body.removeChild(a);
   }
 
-  /* ---------- manual download with 0.5s spinner ---------- */
   var dlBtn  = document.getElementById('downloadBtn');
   var btnTxt = document.getElementById('btnText');
   var busy   = false;
@@ -731,12 +698,10 @@ footer{
     }, 500);
   });
 
-  /* ---------- auto download after 2.5s ---------- */
   window.addEventListener('load', function(){
     setTimeout(triggerDownload, 2500);
   });
 
-  /* ---------- copy password ---------- */
   var copyBtn = document.getElementById('copyBtn');
   var copyTimer = null;
 
@@ -772,7 +737,6 @@ footer{
     }
   });
 
-  /* ---------- scroll reveal ---------- */
   var items = document.querySelectorAll('.rise');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
