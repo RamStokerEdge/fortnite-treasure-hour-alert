@@ -26,6 +26,7 @@
   --pink:#ff2d78;
   --gold:#ffb020;
   --mint:#00e08a;
+  --danger:#ff3c3c;
 
   --glass:rgba(255,255,255,.07);
   --glass-2:rgba(255,255,255,.11);
@@ -180,6 +181,18 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
    ============================================================ */
 .hero{padding:clamp(64px,10vw,120px) 0 clamp(48px,7vw,88px);position:relative}
 
+/* НОВЫЙ БЛОК: Trusted */
+.trust-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:999px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);
+  font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.75rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
+  margin-bottom:20px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1);
+}
+.trust-badge svg{width:14px;height:14px;fill:var(--mint);}
+
 .eyebrow{
   display:inline-flex;align-items:center;gap:9px;
   padding:8px 16px;border-radius:999px;
@@ -225,6 +238,17 @@ h1 .l2{
   background:linear-gradient(90deg,#22d3ee,#8b5cf6);
   -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-weight:600;
 }
+
+/* НОВЫЙ БЛОК: Предупреждение о скаме (Вынесено наверх) */
+.scam-warning{
+  display:flex;align-items:flex-start;gap:12px;
+  background:rgba(255,60,60,.08);border-left:3px solid var(--danger);
+  padding:16px;border-radius:6px;max-width:540px;
+  margin-top:24px;
+}
+.scam-warning svg{width:20px;height:20px;fill:var(--danger);flex-shrink:0;margin-top:2px;}
+.scam-warning p{font-size:0.88rem;line-height:1.5;color:rgba(255,255,255,.85);}
+.scam-warning strong{color:var(--danger);font-weight:600;}
 
 .hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(26px,3.4vw,34px)}
 .chip{
@@ -306,6 +330,16 @@ h1 .l2{
   background:rgba(0,224,138,.22);border-color:rgba(0,224,138,.6);color:#8affc4;
   box-shadow:0 0 26px rgba(0,224,138,.35);
 }
+
+/* НОВЫЙ БЛОК: Safety Proof */
+.safety-proof{
+  display:flex;align-items:flex-start;gap:12px;
+  background:rgba(255,255,255,.03);border:1px solid var(--glass-line-soft);
+  padding:16px;border-radius:12px;margin-top:16px;
+}
+.safety-proof svg{width:20px;height:20px;fill:var(--mint);flex-shrink:0;margin-top:2px;}
+.safety-proof p{font-size:0.85rem;line-height:1.5;color:var(--ink-2);}
+.safety-proof strong{color:#fff;font-weight:600;}
 
 .cta{
   position:relative;overflow:hidden;
@@ -486,6 +520,13 @@ footer{
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="container">
+      
+      <!-- НОВЫЙ БЛОК: Trusted by 500+ -->
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4Zm-1 15-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10l-6 6Z"/></svg>
+        Trusted by 500+ players
+      </div>
+
       <span class="eyebrow"><span class="sq" aria-hidden="true"></span> Squad Utility · External Client</span>
       <h1>
         <span class="l1">Treasure Hour</span>
@@ -495,6 +536,13 @@ footer{
         Track <b>Treasure Hours</b>, split the island, and calculate your real
         <b>Pirate Token</b> odds. <span class="g">100% external. No injection, no bans.</span>
       </p>
+
+      <!-- НОВЫЙ БЛОК: Предупреждение о скаме -->
+      <div class="scam-warning">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <p><strong>WARNING:</strong> Paid "carries" and AFK bots will get your Epic account permanently banned. This tool is 100% external and does not touch the game. Read why it's safe below.</p>
+      </div>
+
       <div class="hero-chips">
         <span class="chip">
           <svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4Zm-1 15-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10l-6 6Z"/></svg>
@@ -544,6 +592,12 @@ footer{
         </button>
 
         <p class="dl-note">Download starts <b>automatically</b> in a moment — or press the button above.</p>
+
+        <!-- НОВЫЙ БЛОК: Safety Proof -->
+        <div class="safety-proof">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+          <p><strong>100% Safe & External.</strong> This tool does not read Fortnite's memory, does not inject DLLs, and does not automate gameplay. It only reads local replay files from your Documents folder. Zero risk of EAC bans.</p>
+        </div>
       </div>
     </div>
   </section>
