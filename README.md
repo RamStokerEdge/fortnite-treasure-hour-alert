@@ -14,6 +14,7 @@
 
 </div>
 
+
 ---
 
 ## 📖 Overview
@@ -35,7 +36,17 @@ The **Pirate Shop Access Token** has an official drop rate of 1 in 137,500 from 
 
 ---
 
-## 🛡️ Technical Safety & Privacy
+## 🔍 Technical Details (How It Works)
+
+To ensure maximum safety, the application operates entirely outside the game environment.
+
+*   **Replay Parsing Engine:** When you finish a match, Fortnite saves a replay file (`.replay`) in your local documents folder. This tool uses a custom parser to read the metadata of that file offline. It extracts the chest interaction events to calculate your exact loot per match.
+*   **Zero-Memory Policy:** The application is built in pure C++ and does not use `OpenProcess` or `ReadProcessMemory` to interact with the Fortnite client. It operates as a completely separate window.
+*   **Dynamic Time-Zone Sync:** The tracker calculates the UTC offset of the Treasure Hour event and converts it to your system's local time. It runs in the system tray (background) and uses native Windows toast notifications to alert you, so you don't need to keep the main window open.
+
+---
+
+## 🛡️ Safety & Privacy
 
 This tool is designed with a **zero-injection** policy to ensure account safety.
 
@@ -43,6 +54,15 @@ This tool is designed with a **zero-injection** policy to ensure account safety.
 - **No Network Interception:** It does not sniff your game traffic.
 - **Local-Only Data:** The Chest Counter analyzes `.replay` files that Fortnite natively saves on your hard drive (`Documents\Fortnite\Replays`).
 - **No Login Required:** You never enter your Epic Games credentials into this application.
+
+---
+
+## 🖼️ Main Interface
+
+<div align="center">
+  <img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/a6aad16a-fc78-4be2-ad36-5103235e9323" />
+
+</div>
 
 ---
 
