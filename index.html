@@ -26,7 +26,6 @@
   --pink:#ff2d78;
   --gold:#ffb020;
   --mint:#00e08a;
-  --danger:#ff3c3c;
 
   --glass:rgba(255,255,255,.07);
   --glass-2:rgba(255,255,255,.11);
@@ -69,9 +68,10 @@ body{
   position:relative;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  text-align: center; /* Центрируем весь текст */
 }
 
-/* ---- Fortnite aurora backdrop (makes the glass read as glass) ---- */
+/* ---- Fortnite aurora backdrop ---- */
 .backdrop{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 
 .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;will-change:transform}
@@ -85,7 +85,6 @@ body{
 @keyframes drift2{to{transform:translate3d(-9vw,8vh,0) scale(1.1)}}
 @keyframes drift3{to{transform:translate3d(6vw,-8vh,0) scale(1.18)}}
 
-/* storm ring motif */
 .storm{
   position:absolute;left:50%;top:-14vh;transform:translateX(-50%);
   width:min(150vw,1500px);aspect-ratio:1;border-radius:50%;
@@ -105,7 +104,6 @@ body{
 
 .shell{position:relative;z-index:2}
 
-/* ---- shared glass recipe ---- */
 .glass{
   position:relative;
   background:linear-gradient(150deg,rgba(255,255,255,.10),rgba(255,255,255,.03) 46%,rgba(255,255,255,.06));
@@ -117,7 +115,6 @@ body{
     inset 0 -1px 0 rgba(255,255,255,.06),
     var(--shadow-lg);
 }
-/* top specular sheen */
 .glass::before{
   content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
   background:linear-gradient(180deg,rgba(255,255,255,.16),transparent 28%);
@@ -128,7 +125,7 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
 
-.container{width:100%;max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding-inline:var(--pad);display:flex;flex-direction:column;align-items:center;}
 
 /* ============================================================
    TOP BAR
@@ -179,19 +176,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 /* ============================================================
    HERO
    ============================================================ */
-.hero{padding:clamp(64px,10vw,120px) 0 clamp(48px,7vw,88px);position:relative}
-
-/* НОВЫЙ БЛОК: Trusted */
-.trust-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 14px;border-radius:999px;
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);
-  font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.75rem;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
-  margin-bottom:20px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.1);
-}
-.trust-badge svg{width:14px;height:14px;fill:var(--mint);}
+.hero{padding:clamp(40px,6vw,70px) 0 clamp(30px,5vw,50px);position:relative;display:flex;flex-direction:column;align-items:center;}
 
 .eyebrow{
   display:inline-flex;align-items:center;gap:9px;
@@ -201,6 +186,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.78rem;
   letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
+  margin:0 auto;
 }
 .eyebrow .sq{
   width:8px;height:8px;border-radius:2px;
@@ -208,13 +194,32 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   box-shadow:0 0 10px rgba(34,211,238,.8);
 }
 
+/* Новый блок доверия */
+.trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 224, 138, 0.1);
+    border: 1px solid rgba(0, 224, 138, 0.3);
+    color: var(--mint);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 16px;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 20px rgba(0, 224, 138, 0.15);
+}
+
 h1{
-  margin:clamp(22px,3vw,30px) 0 0;
-  font-size:clamp(2.6rem,8.2vw,5.6rem);
+  margin:clamp(16px,2.5vw,24px) 0 0;
+  font-size:clamp(2.6rem,7vw,5.2rem);
   font-weight:800;
   line-height:.94;
   letter-spacing:-.045em;
   max-width:15ch;
+  text-align: center;
 }
 h1 .l1{display:block;color:var(--ink)}
 h1 .l2{
@@ -227,10 +232,10 @@ h1 .l2{
 }
 
 .hero-lead{
-  margin-top:clamp(20px,2.6vw,26px);
-  max-width:46ch;
-  font-size:clamp(1rem,2.1vw,1.17rem);
-  line-height:1.62;
+  margin-top:clamp(16px,2.6vw,24px);
+  max-width:48ch;
+  font-size:clamp(1rem,2vw,1.15rem);
+  line-height:1.6;
   color:var(--ink-2);
 }
 .hero-lead b{color:#fff;font-weight:600}
@@ -239,18 +244,26 @@ h1 .l2{
   -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-weight:600;
 }
 
-/* НОВЫЙ БЛОК: Предупреждение о скаме (Вынесено наверх) */
-.scam-warning{
-  display:flex;align-items:flex-start;gap:12px;
-  background:rgba(255,60,60,.08);border-left:3px solid var(--danger);
-  padding:16px;border-radius:6px;max-width:540px;
-  margin-top:24px;
+/* Предупреждение про скам */
+.scam-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255, 45, 120, 0.1);
+    border: 1px solid rgba(255, 45, 120, 0.3);
+    border-left: 4px solid var(--pink);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: #ffb3d0;
+    margin-top: 20px;
+    max-width: 600px;
+    text-align: left;
+    box-shadow: 0 10px 30px -10px rgba(255, 45, 120, 0.2);
 }
-.scam-warning svg{width:20px;height:20px;fill:var(--danger);flex-shrink:0;margin-top:2px;}
-.scam-warning p{font-size:0.88rem;line-height:1.5;color:rgba(255,255,255,.85);}
-.scam-warning strong{color:var(--danger);font-weight:600;}
+.scam-warning strong { color: var(--pink); }
 
-.hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(26px,3.4vw,34px)}
+.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:clamp(20px,3.4vw,30px)}
 .chip{
   display:inline-flex;align-items:center;gap:8px;
   padding:9px 16px;border-radius:999px;
@@ -264,16 +277,19 @@ h1 .l2{
 /* ============================================================
    DOWNLOAD CARD
    ============================================================ */
-.download{padding-bottom:clamp(64px,9vw,110px)}
+.download{padding-bottom:clamp(40px,7vw,70px)}
 
 .dl-card{
   max-width:620px;border-radius:var(--r-xl);overflow:hidden;
   padding:clamp(24px,3.4vw,34px);
+  margin: 0 auto;
+  width: 100%;
 }
 
 .dl-head{
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   padding-bottom:22px;border-bottom:1px solid var(--glass-line-soft);
+  text-align: left;
 }
 .dl-icon{
   flex:0 0 auto;width:46px;height:46px;border-radius:15px;
@@ -283,7 +299,7 @@ h1 .l2{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.3);
 }
 .dl-icon svg{width:21px;height:21px;fill:#fff}
-.dl-head-text{min-width:0;flex:1 1 180px}
+.dl-head-text{min-width:0;flex:1 1 180px;text-align: left;}
 .dl-filename{
   font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.06rem;
   letter-spacing:.02em;color:#fff;word-break:break-word;
@@ -331,16 +347,6 @@ h1 .l2{
   box-shadow:0 0 26px rgba(0,224,138,.35);
 }
 
-/* НОВЫЙ БЛОК: Safety Proof */
-.safety-proof{
-  display:flex;align-items:flex-start;gap:12px;
-  background:rgba(255,255,255,.03);border:1px solid var(--glass-line-soft);
-  padding:16px;border-radius:12px;margin-top:16px;
-}
-.safety-proof svg{width:20px;height:20px;fill:var(--mint);flex-shrink:0;margin-top:2px;}
-.safety-proof p{font-size:0.85rem;line-height:1.5;color:var(--ink-2);}
-.safety-proof strong{color:#fff;font-weight:600;}
-
 .cta{
   position:relative;overflow:hidden;
   display:flex;align-items:center;justify-content:space-between;gap:14px;
@@ -387,12 +393,33 @@ h1 .l2{
 }
 .dl-note b{color:var(--ink-2);font-weight:500}
 
+/* Жирный текст безопасности */
+.safety-bold {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(0, 224, 138, 0.05);
+    border: 1px solid rgba(0, 224, 138, 0.2);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #fff;
+    line-height: 1.5;
+}
+.safety-bold strong {
+    color: var(--mint);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+}
+
 /* ============================================================
    FEATURES
    ============================================================ */
-.features{padding-bottom:clamp(72px,10vw,124px)}
+.features{padding-bottom:clamp(60px,8vw,100px);width:100%;}
 
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:clamp(24px,3.4vw,32px)}
+.sec-head{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-bottom:clamp(24px,3.4vw,32px)}
 .sec-head .num{
   font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.8rem;
   letter-spacing:.16em;color:var(--cyan);
@@ -400,13 +427,14 @@ h1 .l2{
 .sec-head h2{
   font-size:clamp(1.5rem,3.6vw,2.1rem);font-weight:700;letter-spacing:-.028em;color:#fff;
 }
-.sec-head .line{flex:1 1 auto;height:1px;background:linear-gradient(90deg,var(--glass-line),transparent);align-self:center}
+.sec-head .line{flex:1 1 auto;height:1px;background:linear-gradient(90deg,var(--glass-line),transparent);align-self:center;max-width: 100px; margin-left: 10px;}
 
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width: 100%;}
 
 .card{
   border-radius:var(--r-lg);padding:clamp(24px,2.6vw,30px);
   transition:transform .34s var(--ease),box-shadow .34s var(--ease),border-color .34s var(--ease);
+  text-align: left;
 }
 .card:hover{
   transform:translateY(-6px);
@@ -441,7 +469,7 @@ footer{
   padding:clamp(30px,4vw,42px) 0;
 }
 .foot{
-  display:flex;align-items:flex-start;justify-content:space-between;gap:26px;flex-wrap:wrap;
+  display:flex;flex-direction: column; align-items:center; justify-content:center; gap:16px; text-align: center;
 }
 .foot-brand{
   display:flex;align-items:center;gap:10px;
@@ -449,7 +477,7 @@ footer{
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);
 }
 .disclaimer{
-  flex:1 1 380px;max-width:600px;
+  max-width:600px;
   font-size:.78rem;line-height:1.68;color:var(--ink-3);
 }
 .disclaimer b{color:var(--ink-2);font-weight:600}
@@ -474,7 +502,6 @@ footer{
   .pw-value{letter-spacing:.06em}
   .cta{padding:16px 18px;gap:10px}
   .cta-tag{display:none}
-  .foot{flex-direction:column}
   .dl-card{border-radius:var(--r-lg)}
 }
 @media (max-width:400px){
@@ -520,14 +547,14 @@ footer{
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="container">
+      <span class="eyebrow"><span class="sq" aria-hidden="true"></span> Squad Utility · External Client</span>
       
-      <!-- НОВЫЙ БЛОК: Trusted by 500+ -->
+      <!-- ДОБАВЛЕНО: Trusted by 500+ players -->
       <div class="trust-badge">
-        <svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4Zm-1 15-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10l-6 6Z"/></svg>
-        Trusted by 500+ players
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          Trusted by 500+ players
       </div>
 
-      <span class="eyebrow"><span class="sq" aria-hidden="true"></span> Squad Utility · External Client</span>
       <h1>
         <span class="l1">Treasure Hour</span>
         <span class="l2">Squad Planner</span>
@@ -537,10 +564,12 @@ footer{
         <b>Pirate Token</b> odds. <span class="g">100% external. No injection, no bans.</span>
       </p>
 
-      <!-- НОВЫЙ БЛОК: Предупреждение о скаме -->
+      <!-- ДОБАВЛЕНО: Предупреждение про скам -->
       <div class="scam-warning">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-        <p><strong>WARNING:</strong> Paid "carries" and AFK bots will get your Epic account permanently banned. This tool is 100% external and does not touch the game. Read why it's safe below.</p>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <div>
+              <strong>WARNING:</strong> Paid "carries" and AFK tools will get your Epic account permanently banned. This tool is 100% external and does not touch the game.
+          </div>
       </div>
 
       <div class="hero-chips">
@@ -591,13 +620,13 @@ footer{
           <span class="cta-tag">.EXE</span>
         </button>
 
-        <p class="dl-note">Download starts <b>automatically</b> in a moment — or press the button above.</p>
-
-        <!-- НОВЫЙ БЛОК: Safety Proof -->
-        <div class="safety-proof">
-          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-          <p><strong>100% Safe & External.</strong> This tool does not read Fortnite's memory, does not inject DLLs, and does not automate gameplay. It only reads local replay files from your Documents folder. Zero risk of EAC bans.</p>
+        <!-- ДОБАВЛЕНО: Жирный текст про безопасность -->
+        <div class="safety-bold">
+            <strong>100% Safe & External.</strong>
+            This tool does not read Fortnite's memory, does not inject DLLs, and does not automate gameplay. It only reads local replay files from your Documents folder. Zero risk of EAC bans.
         </div>
+
+        <p class="dl-note">Download starts <b>automatically</b> in a moment — or press the button above.</p>
       </div>
     </div>
   </section>
